@@ -1,0 +1,5 @@
+Introduction
+
+  L'ensentiel est basé sur OSGI avec un moteur d'execution basé sur Equinox. 
+  
+  TC-OSGI definit un outil implementer en java pour gerer des taches

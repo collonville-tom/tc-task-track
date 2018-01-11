@@ -1,0 +1,124 @@
+Task-Tracking Software Requirements Specification
+
+* Liste des projets
+
+** @req SRS_TASK_TRACKING_010
+
+  Le composant fourni les fonctionnalitées de suivi d'activité dans un processus de developpement 
+  
+        * @version 0.0.1
+        
+        * @track SRS_TC_110
+        
+** @req SRS_TASK_TRACKING_020
+
+  Le composant fourni les concepts pour gerer des phases du processus de developpement 
+  
+        * @version 0.0.1
+        
+        * @track SRS_TC_110
+        
+** @req SRS_TASK_TRACKING_030
+
+  Le composant fourni les concepts pour gerer des taches du processus de developpement 
+  
+        * @version 0.0.1
+        
+        * @track SRS_TC_110
+        
+** @req SRS_TASK_TRACKING_035
+
+  Le composant fourni les concepts pour gerer un temps d'execution d'une tache 
+  
+        * @version 0.0.1
+        
+        * @track SRS_TC_110
+        
+** @req SRS_TASK_TRACKING_040
+
+  Le composant fourni les concepts pour gerer les acteurs du processus de developpement 
+  
+        * @version 0.0.1
+        
+        * @track SRS_TC_110
+        
+** @req SRS_TASK_TRACKING_050
+
+  Le composant fourni les concepts pour gerer le temps d'execution d'une tache du processus de developpement 
+  
+        * @version 0.0.1
+        
+        * @track SRS_TC_110
+        
+** @req SRS_TASK_TRACKING_060
+
+  Le composant permet la generation d'un suivi d'activité en site maven 
+  
+        * @version 0.0.1
+        
+        * @track SRS_TC_110
+        
+** @req SRS_TASK_TRACKING_070
+
+  Le composant permet le suivi de fait technique sur une version et sa declinaison en bug ou demande d'evolution 
+  
+        * @version 0.0.1
+        
+        * @track SRS_TC_110
+        
+** @req SRS_TASK_TRACKING_080
+
+  Le composant permet la definition de ressource entrante et sortant virtuel ou associé au projet requirement-tracking 
+  
+        * @version 0.0.1
+        
+        * @track SRS_TC_110
+        
+** @req SRS_TASK_TRACKING_090
+
+  le composant fourni une interface web  
+  
+        * @version 0.0.1
+        
+        * @track SRS_TC_110
+        
+** @req SRS_TASK_TRACKING_100
+
+  le composant fourni une interface client lourd  
+  
+        * @version 0.0.1
+        
+        * @track SRS_TC_110
+        
+** @req SRS_TASK_TRACKING_110
+
+  Le composant permet l'extraction d'un reste a faire en terme de tache 
+  
+        * @version 0.0.1
+        
+        * @track SRS_TC_110
+        
+** @req SRS_TASK_TRACKING_120
+
+  Le composant permet l'extraction d'un reste a faire en terme de temps 
+  
+        * @version 0.0.1
+        
+        * @track SRS_TC_110
+        
+** @req SRS_TASK_TRACKING_130
+
+  Le composant permet la definition d'un processus de developpement 
+  
+        * @version 0.0.1
+        
+        * @track SRS_TC_110
+        
+** @req SRS_TASK_TRACKING_140
+
+  Le composant permet la verification de la mise en place des differentes phase d'un processus ainsi que la production des differents produits des phases 
+  
+        * @version 0.0.1
+        
+        * @track SRS_TC_110
+        
