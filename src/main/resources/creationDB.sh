@@ -1,61 +1,58 @@
 #/bin/bash
-win_cmd="psql"
-linux_cmd="sudo -u postgres psql "
 
-if [ "$1" == "LINUX" ]
-then
-  _psql="$linux_cmd"
-else
-  psqlstart
-  _psql="$win_cmd"  
-fi
+#en cas de besoin d'acces aux commandes de bases sur l'ensemble des bases, 
+#permet de ne pas utiliser le compte courant de la bd
+#pour de la maintenance
+#sudo -i -u postgres
 
+USERDB=$(whoami)
+DATADB="ttdb"
 
-RQT_CMD="_psql -U $USERDB $DATADB -c"
+RQT_CMD="$cmd "
 
+psql --version
 
-$($_psql -version)
+addDB()
+{
+  createdb -O $USERDB -E UTF8 $DATADB	
+}
 
-createuser -P --interactive taskTrack
-#dropuser -U postgres taskTrack
-
-createdb -O taskTrack -E UTF8 taskTrackDB
-#dropdb -U "taskTrack" "taskTrackDB"
-
-rm logfile
-
+dropDB()
+{
+  dropdb -U $USERDB $DATADB -W
+}
 
 #Sauvegarde d'une base de données
-
-#sudo -i -u postgres
-#pg_dump -f $PATH_SAVE/nom_de_la_base.sql nom_de_la_base 
+#$1 -> chemin de sauvegarde
+saveDB()
+{
+  pg_dump -f $1/$DATADB.sql $DATADB 
+}
 
 #Restauration d'une base de données (attention la base doit avoir été recréer préalablement avec createdb)
+#$1 -> chemin de sauvegarde
+loadDB()
+{
+  psql -f $1/$DATADB.sql $DATADB 
+}
 
-#sudo -u postgres psql -f $PATH_SAVE/nom_de_la_base.sql nom_de_la_base 
+#execution d'une requete
+#$1 -> requete sql
+execRequest()
+{
+	psql -U $USERDB $DATADB -c "$1"
+}
 
-#Creation d'une table utilisateurs:
+execRequest "CREATE TABLE  utilisateurs (id SERIAL PRIMARY KEY,email varchar( 60 ) UNIQUE NOT NULL ,mot_de_passe varchar( 32 ) NOT NULL ,nom varchar( 20 ) NOT NULL ,date_inscription date NOT NULL);"
 
-#sudo -u postgres psql 
-#CREATE TABLE  utilisateurs (
-#     id SERIAL PRIMARY KEY,
-#     email varchar( 60 ) UNIQUE NOT NULL ,
-#     mot_de_passe varchar( 32 ) NOT NULL ,
-#     nom varchar( 20 ) NOT NULL ,
-#     date_inscription date NOT NULL
-#    );
+execRequest "INSERT INTO utilisateurs (email, mot_de_passe, nom, date_inscription) VALUES ('moi@la.com', MD5('tutu'), 'BaMoi', NOW());"
 
-#Insersion de données dans la table
+execRequest "INSERT INTO utilisateurs (email, mot_de_passe, nom, date_inscription) VALUES ('toi@pas.la', MD5('utut'), 'EtToi', NOW());"
 
-# INSERT INTO utilisateurs (email, mot_de_passe, nom, date_inscription) VALUES ('moi@la.com', MD5('tutu'), 'BaMoi', NOW());
-# INSERT INTO utilisateurs (email, mot_de_passe, nom, date_inscription) VALUES ('toi@pas.la', MD5('utut'), 'EtToi', NOW());
+execRequest "SELECT * FROM utilisateurs;"
 
-#Verification de l'insersion
+execRequest "delete from utilisateurs where id = 4;"
 
-#SELECT * FROM utilisateurs;
+saveDB .
 
-#Nous renvoyant le résultat suivant
-
-#Pour supprimer un enregistrement
-
-#delete from utilisateurs where id = 4;
+#ENDSCRIPT
